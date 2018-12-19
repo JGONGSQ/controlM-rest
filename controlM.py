@@ -24,14 +24,26 @@ def create_jobs(token, jobfile, base_url=BASE_URL):
     # define the create job endpoint
     create_job_url = base_url + '/deploy'
 
+    # forming the file_data and headers
     file_data = {'definitionsFile': open(jobfile, 'rb')}
     headers = json.loads('{"Authorization": "Bearer ' + token + '"}')
-    # print("This is the header data", headers)
 
+    # post the request
     response = requests.post(create_job_url, headers=headers, files=file_data, verify=False)
 
     return response
 
+def run_jobs(token, jobfile, base_url=BASE_URL):
+    # define the run job endpoint
+    run_job_url = base_url + '/run'
+
+    #forming the file_data and headers
+    file_data = {'jobDefinitionsFile': open(jobfile, 'rb')}
+    headers = json.loads('{"Authorization": "Bearer ' + token + '"}')
+
+    # post the run request
+    response = requests.post(run_job_url, headers=headers, files=file_data, verify=False)
+    return response
 
 def main():
     
@@ -42,7 +54,9 @@ def main():
     token = login()
 
     # Create the jobs
-    response = create_jobs(token=token, jobfile=JOB_FILE)
+    # response = create_jobs(token=token, jobfile=JOB_FILE)
+
+    response = run_jobs(token=token, jobfile=JOB_FILE)
 
     print("###", response, response.text)
 
