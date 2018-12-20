@@ -1,8 +1,9 @@
 # controlM_api
 
-contrlM_api api testing repo
+contrlM REST API repo
 
-## ctm cli
+## Run examples
+### ctm cli
 ```Bash
 # Get the all the jobs in the server via ctm cli
 ctm deploy jobs::get xml -s "ctm=*&folder=NDIA*"
@@ -20,7 +21,7 @@ ctm run jobs:status::get -s "jobname=LX*"
 ctm login session
 ```
 
-## Python run
+### Python run
 ```bash
 # Load the test data and deploy jobs to the local contrlM workbench
 python ctrlM.py data/test_folder.xml
