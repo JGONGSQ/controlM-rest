@@ -23,7 +23,7 @@ ctm login session
 ## Python run
 ```bash
 # Load the test data and deploy jobs to the local contrlM workbench
-python ctrlM.py test_data.xml
+python ctrlM.py data/test_folder.xml
 
 # run order the deployed jobs
 python ctrlM.py
