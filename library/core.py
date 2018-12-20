@@ -1,6 +1,7 @@
-import sys
 import requests
 import json
+
+from settings.local import CTM, TEST_FOLDER
 
 
 class CoreAPIs(object):
@@ -14,7 +15,7 @@ class CoreAPIs(object):
         
 
     def login(self, username, password, base_url):
-        
+        # define the login url
         login_url = base_url + '/session/login'
 
         body = {
@@ -26,6 +27,30 @@ class CoreAPIs(object):
         
         return response.json()['token']
 
-    def test(self):
-        print("This is the token", self.token)
-        return
+    def deploy_jobs(self, jobfile):
+        # define the deploy job url
+        deploy_job_url = self.base_url + '/deploy'
+
+        # forming the file_data
+        file_data = file_data = {'definitionsFile': open(jobfile, 'rb')}
+        
+        # forming the headers
+        headers = json.loads('{"Authorization": "Bearer ' + self.token + '"}')
+
+        response = requests.post(deploy_job_url, headers=headers, files=file_data, verify=False)
+        return response
+
+    def run_order_jobs(self, ctm=CTM, folder=TEST_FOLDER):
+        # define the run order url
+        run_order_job_url = self.base_url + '/run/order'
+
+        body = {
+            "ctm": ctm,
+            "folder": folder
+        }
+
+        headers = json.loads('{"Authorization": "Bearer ' + self.token + '"}')
+        response = requests.post(run_order_job_url, headers=headers, json=body, verify=False)
+
+        return response
+
