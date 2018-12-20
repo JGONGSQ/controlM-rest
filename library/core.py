@@ -39,8 +39,6 @@ class CoreAPIs(object):
         return response
 
     def run_order_jobs(self, ctm=CTM, folder=TEST_FOLDER, **kwargs):
-        # TODO
-        # Passing extra variables, such as the order data of the jobs in format of string YYYYMMDD
         # define the run order url
         run_order_job_url = self.base_url + '/run/order'
 
