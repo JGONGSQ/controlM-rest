@@ -51,7 +51,7 @@ def run_jobs(token, jobfile, base_url=BASE_URL):
 
 def run_order_jobs(token, folder, ctm_name=CTM, base_url=BASE_URL):
 
-    run_order_job_url = base_url = '/run/order'
+    run_order_job_url = base_url + '/run/order'
     body = {
         "ctm": ctm_name,
         "folder": folder
