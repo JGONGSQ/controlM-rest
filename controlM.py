@@ -11,9 +11,9 @@ def login(base_url=BASE_URL, username=USERNAME, password=PASSWORD):
     headers = {'content-type': 'application/json'}
 
     # forming the request body
-    body = { 
+    body = {
         "username": username,
-        "password": password 
+        "password": password
     }
     
     # get the response and change into the json format
