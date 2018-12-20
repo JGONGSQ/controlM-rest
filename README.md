@@ -13,6 +13,9 @@ ctm run order workbench NDIA_IDS2_#env#_011_ST_SRCI_11
 # Check the status of the run with <runId>
 ctm run status 2003409f-b2d7-4266-b013-04668db18a59
 
+# Check all the job status with query string
+ctm run jobs:status::get -s "jobname=LX*"
+
 # Get a login session via ctm cli
 ctm login session
 ```
@@ -21,5 +24,8 @@ ctm login session
 ```bash
 # Load the test data and deploy jobs to the local contrlM workbench
 python ctrlM.py test_data.xml
+
+# run order the deployed jobs
+python ctrlM.py
 ```
 

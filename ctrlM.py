@@ -14,6 +14,12 @@ def main():
         response = core_apis.deploy_jobs(job_file)
 
     # test run order the jobs
+    response = core_apis.run_order_jobs(kwargs=
+        {
+            "orderDate": "20181212"
+        }
+    )
+
     # response = core_apis.run_order_jobs()
     
     print("This is the response", response, response.text)

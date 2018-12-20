@@ -12,6 +12,7 @@ class CoreAPIs(object):
         self.base_url = base_url
         self.headers = {'content-type': 'application/json'}
         self.token = self.login(username, password, base_url)
+        self.auth_headers = {"Authorization": "Bearer " + self.token}
         
 
     def login(self, username, password, base_url):
@@ -33,14 +34,13 @@ class CoreAPIs(object):
 
         # forming the file_data
         file_data = file_data = {'definitionsFile': open(jobfile, 'rb')}
-        
-        # forming the headers
-        headers = json.loads('{"Authorization": "Bearer ' + self.token + '"}')
 
-        response = requests.post(deploy_job_url, headers=headers, files=file_data, verify=False)
+        response = requests.post(deploy_job_url, headers=self.auth_headers, files=file_data, verify=False)
         return response
 
-    def run_order_jobs(self, ctm=CTM, folder=TEST_FOLDER):
+    def run_order_jobs(self, ctm=CTM, folder=TEST_FOLDER, **kwargs):
+        # TODO
+        # Passing extra variables, such as the order data of the jobs in format of string YYYYMMDD
         # define the run order url
         run_order_job_url = self.base_url + '/run/order'
 
@@ -49,8 +49,13 @@ class CoreAPIs(object):
             "folder": folder
         }
 
-        headers = json.loads('{"Authorization": "Bearer ' + self.token + '"}')
-        response = requests.post(run_order_job_url, headers=headers, json=body, verify=False)
-
+        orderDate_key = 'orderDate'
+        if 'kwargs' in kwargs:
+            orderDate = kwargs['kwargs'].get(orderDate_key)
+            body.update({orderDate_key: orderDate})
+        
+        response = requests.post(run_order_job_url, headers=self.auth_headers, json=body, verify=False)
+        
         return response
+        
 
