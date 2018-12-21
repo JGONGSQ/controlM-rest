@@ -25,7 +25,6 @@ class CoreAPIs(object):
         }
 
         response = requests.post(login_url, headers=self.headers, json=body, verify=False)
-        
         return response
 
     def deploy_jobs(self, jobfile):

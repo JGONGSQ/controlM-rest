@@ -35,8 +35,6 @@ def main():
 
         response = core_apis.run_order_jobs(
             kwargs=extra_var)
-
-    # response = core_apis.run_order_jobs()
     
     print("This is the response", response, response.text)
     return
