@@ -11,22 +11,22 @@ class CoreAPIs(object):
         self.password = password
         self.base_url = base_url
         self.headers = {'content-type': 'application/json'}
-        self.token = self.login(username, password, base_url)
+        self.token = self.login().json()['token']
         self.auth_headers = {"Authorization": "Bearer " + self.token}
         
 
-    def login(self, username, password, base_url):
+    def login(self):
         # define the login url
-        login_url = base_url + '/session/login'
+        login_url = self.base_url + '/session/login'
 
         body = {
-            "username": username,
-            "password": password
+            "username": self.username,
+            "password": self.password
         }
 
         response = requests.post(login_url, headers=self.headers, json=body, verify=False)
         
-        return response.json()['token']
+        return response
 
     def deploy_jobs(self, jobfile):
         # define the deploy job url

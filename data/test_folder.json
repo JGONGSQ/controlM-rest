@@ -9,7 +9,7 @@
         "SubApplication" : "SubApplicationName",
         "RunAs" : "workbench",
         "When" : {
-            "WeekDays": ["SUN"]
+            "WeekDays": ["MON", "TUE", "WED", "THU", "FRI"]
         },
         "Job1": {
             "Type": "Job:Command",

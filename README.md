@@ -23,10 +23,16 @@ ctm login session
 
 ### Python run
 ```bash
+# Syntax
+python ctrlM.py <action> <extra-var>(Optional Variables)
+
+# Login to the ctrlM
+python ctrlM.py login
+
 # Load the test data and deploy jobs to the local contrlM workbench
-python ctrlM.py data/test_folder.xml
+python ctrlM.py deploy data/test_folder.xml
 
 # run order the deployed jobs
-python ctrlM.py
+python ctrlM.py run
 ```
 
