@@ -1,0 +1,30 @@
+{
+    "FolderSampleAll": {
+        "Type": "Folder",
+        "AdjustEvents": true,
+        "ControlmServer": "workbench",
+        "SiteStandard": "",
+        "OrderMethod": "Manual",
+        "Application": "ApplicationName",
+        "SubApplication" : "SubApplicationName",
+        "RunAs" : "workbench",
+        "When" : {
+            "WeekDays": ["SUN"]
+        },
+        "Job1": {
+            "Type": "Job:Command",
+            "Command": "echo I am a job",
+            "RunAs": "workbench"
+        },
+        "mut1" : {
+            "Type": "Resource:Mutex",
+            "MutexType": "Exclusive" 
+        },
+        "Notify1": {
+            "Type": "Notify:ExecutionTime",
+            "Criteria": "LessThan",
+            "Value": "3",
+            "Message": "Less than expected"
+        }
+    }
+}
