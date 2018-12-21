@@ -18,6 +18,7 @@ def main():
 
     core_apis = CoreAPIs(USERNAME, PASSWORD, BASE_URL)
 
+    # login to the system
     if args.action == 'login':
         response = core_apis.login()
 
