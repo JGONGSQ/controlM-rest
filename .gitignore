@@ -1,3 +1,4 @@
 *.pyc
 .vscode
 /controlm-rest-api/test_data/*.xml
+test_folder.xml
