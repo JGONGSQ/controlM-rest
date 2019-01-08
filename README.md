@@ -30,7 +30,7 @@ python ctrlM.py <action> <extra-var>(Optional Variables)
 python ctrlM.py login
 
 # Load the test data and deploy jobs to the local contrlM workbench
-python ctrlM.py deploy data/test_folder.xml
+python ctrlM.py deploy test_data/test_folder.xml
 
 # run order the deployed jobs
 python ctrlM.py run
