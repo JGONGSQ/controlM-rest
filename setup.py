@@ -4,7 +4,6 @@ from setuptools import find_packages
 setup(
     name='controlM-rest',
     version='0.1',
-    # packages=['controlm-rest-api',],
     packages=find_packages(),
     long_description=open('README.txt').read(),
     keywords=['ControlM', 'REST-api'],
