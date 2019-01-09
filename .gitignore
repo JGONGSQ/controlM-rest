@@ -3,3 +3,4 @@
 /controlm-rest-api/test_data/*.xml
 /dist
 MANIFEST
+*.egg-info
