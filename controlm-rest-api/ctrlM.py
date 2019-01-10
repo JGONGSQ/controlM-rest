@@ -1,22 +1,29 @@
 import sys
 import argparse
-
+import json
 from settings.local import BASE_URL, USERNAME, PASSWORD
 from library.core import CoreAPIs 
 
 
 def main():
-    extra_var_str = 'extra-var'
     action_str = 'action'
+    authentication_str = 'auth'
+    extra_var_str = 'extra_var'
 
     parser = argparse.ArgumentParser(
         description="Start of the ControlM REST API package"
         )
     parser.add_argument(action_str, help="The action take for the script, e.g. deploy or run")
-    parser.add_argument(extra_var_str, nargs="?", help="The extra parameters would be needed for the action, could be a filepath or extra extra variables")
+    parser.add_argument("-"+authentication_str, nargs="?", help='The authentication dict including {"username":"username", "password":"password", "base_url":"base_url"}')    
+    parser.add_argument("-"+extra_var_str, nargs="?", help="The extra parameters would be needed for the action, could be a filepath or extra extra variables")
     args = parser.parse_args()
 
-    core_apis = CoreAPIs(USERNAME, PASSWORD, BASE_URL)
+    authentication_json = getattr(args, authentication_str)
+    if not authentication_json:
+        core_apis = CoreAPIs(USERNAME, PASSWORD, BASE_URL)
+    else:
+        auth_dict = json.loads(authentication_json)
+        core_apis = CoreAPIs(auth_dict['username'], auth_dict['password'], auth_dict['base_url'])
 
     # login to the system
     if args.action == 'login':
