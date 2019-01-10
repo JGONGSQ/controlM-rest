@@ -24,22 +24,29 @@ ctm login session
 ### Python run
 ```bash
 # Syntax
-python ctrlM.py <action> <-auth> <-extra-var>
+    python ctrlM.py <action> <-auth> <-extra-var>
 
 # Login to the ctrlM
-python ctrlM.py login
+    python ctrlM.py login
 
 # Login to the ctrlM with auth
-python ctrlM.py login -auth '{"username": "workbench", "password": "workbench", "base_url": "https://localhost:8443/automation-api"}'
+# Mac or Linux bash shell
+    python ctrlM.py login -auth '{"username": "workbench", "password": "workbench", "base_url": "https://localhost:8443/automation-api"}'
 
 # Load the test data and deploy jobs to the local contrlM workbench
-python ctrlM.py deploy -extra_var test_data/test_folder.xml
+    python ctrlM.py deploy -extra_var test_data/test_folder.xml
 
 # Load the test data and deploy jobs to the pointing server
-python ctrlM.py deploy -auth '{"username": "workbench", "password": "workbench", "base_url": "https://localhost:8443/automation-api"}' -extra_var test_data/test_folder.xml
-
+    python ctrlM.py deploy -auth '{"username": "workbench", "password": "workbench", "base_url": "https://localhost:8443/automation-api"}' -extra_var test_data/test_folder.xml
 
 # run order the deployed jobs
-python ctrlM.py run
+    python ctrlM.py run
 ```
 
+### Windows cmd
+```bash
+# Windows cmd
+    python ctrlM.py login -auth "{\"username\": \"workbench\", \"password\": \"workbench\", \"base_url\": \"https://localhost:8443/automation-api\"}"
+
+
+```
