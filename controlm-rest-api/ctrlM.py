@@ -1,7 +1,7 @@
 import sys
 import argparse
 
-from settings.local import BASE_URL, USERNAME, PASSWORD, CTM
+from settings.local import BASE_URL, USERNAME, PASSWORD
 from library.core import CoreAPIs 
 
 
