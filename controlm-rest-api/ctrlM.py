@@ -7,10 +7,12 @@ from library.core import CoreAPIs
 
 
 def main():
+    # arguments
     action_str = 'action'
     authentication_str = 'auth'
     extra_var_str = 'extra_var'
 
+    # choices of action argument
     action_login = 'login'
     action_run = 'run'
     action_deploy = 'deploy'
