@@ -16,13 +16,14 @@ def main():
     action_login = 'login'
     action_run = 'run'
     action_deploy = 'deploy'
+    action_status = 'status'
 
     parser = argparse.ArgumentParser(
         description="ControlM REST API package, it uses the REST api to connect the ControlM Server"
         )
     parser.add_argument(
         action_str, 
-        choices=[action_login, action_deploy, action_run], 
+        choices=[action_login, action_deploy, action_run, action_status], 
         help="The action take for the script, e.g. deploy or run"
         )
     parser.add_argument(
@@ -57,10 +58,14 @@ def main():
     if args.action == action_run:
         extra_var = getattr(args, extra_var_str)
         if not extra_var:
-            extra_var = {"orderDate": "20181212"}
+            extra_var = {"orderDate": "20190115"}
 
         response = core_apis.run_order_jobs(
             kwargs=extra_var)
+
+    if args.action == action_status:
+        jobname = getattr(args, extra_var_str)
+        response = core_apis.run_jobs_get_status(jobname)
     
     print("This is the response", response, response.text)
     return

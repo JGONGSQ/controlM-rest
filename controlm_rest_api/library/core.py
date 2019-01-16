@@ -53,5 +53,20 @@ class CoreAPIs(object):
 
         response = requests.post(run_order_job_url, headers=self.auth_headers, json=body, verify=False)
         return response
+
+    def run_jobs_get_status(self, jobname, **kwargs):
+        # define the run jobs get status
+        run_jobs_get_status = self.base_url + '/run/jobs/status'
+        body = {
+            'jobname': jobname
+        }
+
+        if 'kwargs' in kwargs:
+            # update the body dict
+            for k, v in kwargs['kwargs'].items():
+                body.update({k: v})
+
+        response = requests.get(run_jobs_get_status, headers=self.auth_headers, json=body, verify=False)
+        return response
         
 
