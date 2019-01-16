@@ -64,7 +64,7 @@ class CoreAPIs(object):
             for k, v in kwargs['kwargs'].items():
                 body.update({k: v})
 
-        response = requests.get(run_jobs_get_status, headers=self.auth_headers, json=body, verify=False)
+        response = requests.get(run_jobs_get_status, headers=self.auth_headers, params=body, verify=False)
         return response
         
 
