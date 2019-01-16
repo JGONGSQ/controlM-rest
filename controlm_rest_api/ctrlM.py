@@ -64,8 +64,8 @@ def main():
             kwargs=extra_var)
 
     if args.action == action_status:
-        jobname = getattr(args, extra_var_str)
-        response = core_apis.run_jobs_get_status(jobname)
+        job_query_dict = getattr(args, extra_var_str)
+        response = core_apis.run_jobs_get_status(kwargs=json.loads(job_query_dict))
     
     print("This is the response", response, response.text)
     return

@@ -54,12 +54,10 @@ class CoreAPIs(object):
         response = requests.post(run_order_job_url, headers=self.auth_headers, json=body, verify=False)
         return response
 
-    def run_jobs_get_status(self, jobname, **kwargs):
-        # define the run jobs get status
+    def run_jobs_get_status(self, **kwargs):
+        # define the run jobs get status url
         run_jobs_get_status = self.base_url + '/run/jobs/status'
-        body = {
-            'jobname': jobname
-        }
+        body = dict()
 
         if 'kwargs' in kwargs:
             # update the body dict

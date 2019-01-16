@@ -41,6 +41,9 @@ ctm login session
 
 # run order the deployed jobs
     python ctrlM.py run
+
+# get the run job status
+    python ctrlM.py status -extra_var '{"jobname": "Jobname", "folder": "foldername"}'
 ```
 
 ### Windows cmd
