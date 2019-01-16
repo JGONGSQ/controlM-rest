@@ -1,6 +1,6 @@
 *.pyc
 .vscode
-/controlm-rest-api/test_data/*.xml
+/controlm_rest_api/test_data/*.xml
 MANIFEST
 *.egg-info
 build
