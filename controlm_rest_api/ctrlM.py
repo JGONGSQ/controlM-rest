@@ -3,7 +3,7 @@ import argparse
 import json
 
 from settings.local import BASE_URL, USERNAME, PASSWORD
-from library.core import CoreAPIs 
+from library.core import CoreAPIs
 
 
 def main():
