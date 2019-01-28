@@ -56,7 +56,7 @@ class CoreAPIs(object):
 
     def run_jobs_get_status(self, **kwargs):
         # define the run jobs get status url
-        run_jobs_get_status = self.base_url + '/run/jobs/status'
+        run_jobs_get_status_url = self.base_url + '/run/jobs/status'
         body = dict()
 
         if 'kwargs' in kwargs:
@@ -64,7 +64,15 @@ class CoreAPIs(object):
             for k, v in kwargs['kwargs'].items():
                 body.update({k: v})
 
-        response = requests.get(run_jobs_get_status, headers=self.auth_headers, params=body, verify=False)
+        response = requests.get(run_jobs_get_status_url, headers=self.auth_headers, params=body, verify=False)
+        return response
+
+    def rerun_job(self, job_id):
+        # define the re-run jobs url
+        rerun_job_url = self.base_url + '/run/job/{job_id}/rerun'.format(jobb_id=job_id)
+        
+        # make the post calls
+        response = requests.post(rerun_job_url, headers=self.headers, verify=False)
         return response
         
 
