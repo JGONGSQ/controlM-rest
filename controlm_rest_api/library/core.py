@@ -67,11 +67,18 @@ class CoreAPIs(object):
         response = requests.get(run_jobs_get_status_url, headers=self.auth_headers, params=body, verify=False)
         return response
 
+    def run_job_status(self, job_id):
+        run_job_status_url = self.base_url + '/run/job/{job_id}/status'.format(job_id=job_id)
+
+        # make the get call
+        response = requests.get(run_job_status_url, headers=self.headers, verify=False)
+        return response
+
     def rerun_job(self, job_id):
         # define the re-run jobs url
-        rerun_job_url = self.base_url + '/run/job/{job_id}/rerun'.format(jobb_id=job_id)
+        rerun_job_url = self.base_url + '/run/job/{job_id}/rerun'.format(job_id=job_id)
         
-        # make the post calls
+        # make the post call
         response = requests.post(rerun_job_url, headers=self.headers, verify=False)
         return response
         
