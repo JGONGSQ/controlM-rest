@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='controlM-rest',
-    version='0.1.8',
+    version='0.1.9',
     packages=find_packages(),
     long_description=open('README.txt').read(),
     keywords=['ControlM', 'REST-api'],

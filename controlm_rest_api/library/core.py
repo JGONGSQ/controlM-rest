@@ -1,7 +1,7 @@
 import requests
 import json
 
-from settings.local import CTM, TEST_FOLDER
+from ..settings.local import CTM, TEST_FOLDER
 
 
 class CoreAPIs(object):
